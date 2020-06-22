@@ -26,27 +26,25 @@
 
   <div fxFlex="40"  *ngIf="dish" >
    
-    <mat-card  >
-      
-    <mat-card-header>
+    <div>
       <h3>Comments</h3>
-    </mat-card-header> 
-    <mat-card-content>
-      <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="80px" >
-      <mat-list *ngFor="let data of dish.comments">
-        <mat-list-item >
-          <p>{{data.comment}} <br>
-            {{data.rating}} Stars <br>
-            --{{data.author}} {{data.date | date}}
-          </p><br>
+    </div >
+    <div>
+      <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="40px" >
+        <mat-list *ngFor="let data of dish.comments">
+          <mat-list-item >
+            <p><span>{{data.comment}}</span> <br>
+              <span>{{data.rating}} Stars</span> <br>
+              <span>--{{data.author}} {{data.date | date}}</span>
+            </p><br>
+            
+          </mat-list-item>
           
-        </mat-list-item>
-        
-      </mat-list>
+        </mat-list>
+      </div>
     </div>
-    </mat-card-content>
-  
-    </mat-card>
+    
+   
     
 
   </div>
