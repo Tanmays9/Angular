@@ -16,46 +16,123 @@
 
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button [routerLink]= "['/dishdetail',prev]">
-          <span class="fa fa-chevron-left fa-lg "></span>
+          <button mat-button [routerLink]="['/dishdetail',prev]">
+            <span class="fa fa-chevron-left fa-lg "></span>
           </button>
           <button mat-button (click)="goBack()">BACK</button>
           <button mat-button>LIKE</button>
           <button mat-button>Share</button>
           <span class=" flex-spacer "></span>
-          <button mat-button [routerLink]= "['/dishdetail',next]">
+          <button mat-button [routerLink]="['/dishdetail',next]">
             <span class="fa fa-chevron-right fa-lg "></span>
-            </button>
+          </button>
         </mat-card-actions>
       </mat-card>
 
-    </div>
-  </div>
-  
 
-  <div fxFlex="40"  *ngIf="dish" >
-   
-    <div>
+    </div>
+
+  </div>
+
+
+
+
+  <div fxFlex="40" fxLayout="column" *ngIf="dish">
+
+
+    <div fxFlex>
       <h3>Comments</h3>
-    </div >
-    <div>
-      <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="40px" >
+    </div>
+
+    <div fxFlex>
+      <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="40px">
         <mat-list *ngFor="let data of dish.comments">
-          <mat-list-item >
+          <mat-list-item>
             <p><span>{{data.comment}}</span> <br>
               <span>{{data.rating}} Stars</span> <br>
               <span>--{{data.author}} {{data.date | date}}</span>
             </p><br>
-            
+
           </mat-list-item>
-          
+
         </mat-list>
       </div>
     </div>
-  </div>
-  <div [hidden]="dish">
-    <mat-spinner></mat-spinner><h4>Loading ...Please Wait !</h4>
+
+    <div>
+           <hr> 
+      <h3>Write your comment</h3>
+    </div>
+
+
+
+    <div fxFlex>
+      <div fxLayout="column" fxLayoutGap="40px">
+        <div *ngIf="reviewForm.status =='VALID'">
+         
+
+          <mat-list fxLayout>
+            <mat-list-item>
+
+              <p><span>{{ reviewForm.value.comment }}</span> <br>
+                <span>{{reviewForm.value.rating}} Stars</span> <br>
+                <span>--{{reviewForm.value.fullname}} </span>
+              </p><br>
+
+            </mat-list-item>
+
+          </mat-list>
+        </div>
+
+
+
+
+        <form novalidate [formGroup]="reviewForm" #rform="ngForm" (ngSubmit)="onSubmit()">
+          <p>
+            <mat-form-field class="full-width">
+              <input matInput formControlName="fullname" placeholder="Name" type="text" required>
+              <mat-error *ngIf="formErrors.fullname">{{ formErrors.fullname }}</mat-error>
+
+            </mat-form-field>
+          </p>
+
+
+          <mat-slider matInput formControlName="rating" min="1" max="5" step="1" value="5" thumbLabel tickInterval="1">
+          </mat-slider>
+
+
+          <p>
+            <mat-form-field class="full-width">
+              <textarea matInput formControlName="comment" placeholder="Your Comment"  rows=12 required></textarea>
+              <mat-error *ngIf="formErrors.comment">{{ formErrors.comment }}</mat-error>
+            </mat-form-field>
+          </p>
+
+          <button type="submit" mat-button class="background-primary text-floral-white"
+            [disabled]='reviewForm.invalid'>Submit</button>
+
+
+        </form>
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
 
   </div>
+
+
+
+</div>
+<div [hidden]="dish">
+  <mat-spinner></mat-spinner>
+  <h4>Loading ...Please Wait !</h4>
 
 </div>
