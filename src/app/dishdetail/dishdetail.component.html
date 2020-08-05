@@ -1,8 +1,8 @@
-<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" 
   fxLayoutAlign.gt-md="space-around center" fxLayoutGap="10px" fxLayoutGap.xs="0">
 
-  <div fxFlex="40">
-    <div *ngIf="dish">
+  <div fxFlex="40" *ngIf = "dish" [@visibility] = "visibility " [@expand]  >
+    
       <mat-card>
         <mat-card-header>
           <mat-card-title>
@@ -20,7 +20,7 @@
             <span class="fa fa-chevron-left fa-lg "></span>
           </button>
           <button mat-button (click)="goBack()">BACK</button>
-          <button mat-button>LIKE</button>
+          <button mat-button  >LIKE</button>
           <button mat-button>Share</button>
           <span class=" flex-spacer "></span>
           <button mat-button [routerLink]="['/dishdetail',next]">
@@ -30,14 +30,14 @@
       </mat-card>
 
 
-    </div>
+    
 
   </div>
 
 
 
 
-  <div fxFlex="40" fxLayout="column" *ngIf="dish">
+  <div fxFlex="40" fxLayout="column" *ngIf="dish" [@visibility] = "visibility " [@expand]  >
 
 
     <div fxFlex>
