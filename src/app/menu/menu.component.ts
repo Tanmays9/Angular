@@ -1,7 +1,7 @@
 import { Component, OnInit,inject, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
-import { flyInOut, expand } from '../animations/app.animation';
+import { flyInOut, expand, visibility } from '../animations/app.animation';
 
 
 @Component({
@@ -16,6 +16,7 @@ import { flyInOut, expand } from '../animations/app.animation';
   animations:[
     flyInOut(),
     expand()
+    
   ]
 })
 export class MenuComponent implements OnInit {

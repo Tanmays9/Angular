@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
 import { Comment } from '../shared/comment';
 import { visibility, flyInOut, expand }  from '../animations/app.animation';
-import { delay } from 'rxjs/operators'
+import { delay } from 'rxjs/operators';
 import { ContactComponent } from '../contact/contact.component';
 import { DISHES } from '../shared/dishes';
 import { from } from 'rxjs';
@@ -155,6 +155,7 @@ export class DishdetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+  
 
  
 
